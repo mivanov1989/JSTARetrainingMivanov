@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 8</title>
+</head>
+<body>
+<script>
+    const timeUnit = prompt('Please enter time unit: "Hour", "Day or "Month"');
+    const unitNumber = parseInt(prompt('Please enter number of time units'));
+
+        switch (timeUnit) {
+            case "Hour": alert(`Seconds in ${unitNumber} hour(s): ` + 3600*unitNumber);
+            break;
+            case "Day": alert(`Seconds in ${unitNumber} day(s): ` + 3600*24*unitNumber);
+            break;
+            case "Month": alert(`Seconds in ${unitNumber} month(s): ` + 3600*24*31*unitNumber);
+            break;
+            default: alert(`Time unit input is invalid: ${timeUnit}, must be either "Hour", "Day" or "Month"`);
+        }
+</script>
+</body>
+</html>
