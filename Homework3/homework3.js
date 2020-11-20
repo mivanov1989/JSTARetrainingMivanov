@@ -80,7 +80,7 @@ function findUnique(arr) {
 console.log(findUnique([2, 3, 4, 55, 6, 7, 8]));
 
 //Task7
-function lastElement(arr, n) {
+function lastElement(arr, n = 1) {
   let resultArray = [];
   for (
     let i = Array.from(arr).length - 1;
