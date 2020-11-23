@@ -12,19 +12,19 @@ function testThrow(e) {
   //Task2
   function calcArea(width, height) {
     try {
-      if (!isNaN(width) && !isNaN(height) && width > 0 && height > 0) {
-        throw new Exception(
+      if (isNaN(width) || isNaN(height) && (width <= 0 || height <= 0)) {
+        throw new Error(
           "One or both parameters is not numeric, or less than a zero."
         );
       } else {
         return width * height;
       }
-    } catch (Exception) {
-      console.log("Exception: " + Exception);
+    } catch (e) {
+      console.log("Error: " + e.message);
     }
   }
   
-  calcArea(2, 10);
+  calcArea(10, 5);
   
   //Task3
   function checkAge() {
