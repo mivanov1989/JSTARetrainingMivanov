@@ -53,6 +53,11 @@ function propsCount(obj) {
       return `Current course: ${new Date().getFullYear() - this.year}`;
     }
   }
+
+  //Examples
+  let mivanov = new Student('Mykola', 'Ivanov', 2016);
+  console.log(mivanov.showFullName('Yuriyovych')); //Mykola Ivanov Yuriyovych
+  console.log(showCourse()); //Current course: 4
   
   //Task4
   class Worker {
@@ -90,6 +95,22 @@ function propsCount(obj) {
         console.log(`${w.fullName}: ${w.showSalaryWithExperience()}`)
       );
   }
+
+//Examples
+let w1 = new Worker('John Johnson', 1.5, 25);
+console.log(w1.fullName) //John Johnson
+w1.showSalary() //37.5
+console.log('New experience: ' + w1.experience) //New experience: 1.2
+w1.showSalaryWithExperience() //45
+w1.experience = 1.88
+console.log('New experience: ' + w1.experience) //New experience: 1.88
+w1.showSalaryWithExperience() //70.5
+let w2 = new Worker("Tom Tomson", 4.8, 22);
+let w3 = new Worker("Barry Cool", 4.9, 25);
+showWorkersSortedBySalaryAsc(w1, w2, w3)
+//John Johnson: 70.5
+//Tom Tomson: 126.71999999999998
+//Barry Cool: 147
   
   //Task5
   class GeometricFigure {
@@ -148,5 +169,15 @@ function propsCount(obj) {
         totalArea += f.getArea();
       }
     });
-    console.log(`toal area: ${totalArea}`);
-  }  
+    console.log(`Total area: ${totalArea}`);
+  }
+
+//Examples
+let triangle = new Triangle(4, 5, 6);
+let square = new Square(6, 7);
+let circle = new Circle(7.3);
+handleFigures(triangle, square, circle);
+//Geometric figure: Triangle - area: 9.921567416492215
+//Geometric figure: Square - area: 42
+//Geometric figure: Circle - area: 167.41547250980008
+//Total area: 219.3370399262923
