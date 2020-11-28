@@ -1,0 +1,197 @@
+<!--Task1-->
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Test Page</title>
+</head>
+<body>
+    <div id="test">First</div>
+    <script>
+        alert('Click OK to change "First" to "Last"');
+        //Find element by ID
+        document.getElementById('test').innerText = 'Last';
+        alert(`Content of the DIV is ${document.getElementById('test').innerText}`);
+        alert('Click OK to change "Last" to "First"');
+        //Find element by Tag Name
+        document.getElementsByTagName('div').innerText = 'First';
+        alert(`Content of the DIV is ${document.getElementsByTagName('div').innerText}`);
+    </script>
+</body>
+</html>
+
+<!--Task2-->
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Test Page</title>
+</head>
+<body>
+    <img class="image" src="dog.jpg">
+    <script>
+        alert('Click OK to change attribute "src" from "cat.jpg" to "cat.jpg"');
+        //Find element by ID
+        document.querySelectorAll('img[class=image]')[0].setAttribute('src', 'cat.jpg');
+        alert(`HTML of the img is ${document.getElementsByTagName('img')[0].getAttribute('src')}`);
+    </script>
+</body>
+</html>
+
+<!--Task3-->
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Test Page</title>
+</head>
+<body>
+    <h2>Article header</h2>
+      <div id="text">
+        <p>First paragraph</p>
+        <p>Second paragraph</p>
+        <p>Third paragraph</p>
+      </div>
+    <p>Another text</p>
+    <script>
+        const elems = document.querySelectorAll('div[id=text] > p');
+        alert(`Selector text 0: ${elems[0].innerText} \nSelector text 1: ${elems[1].innerText} \nSelector text 2: ${elems[2].innerText}`);
+    </script>
+</body>
+</html>
+
+<!--Task4-->
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Test Page</title>
+</head>
+<body>
+    <ul id="list">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <script>
+        //First way
+        alert(document.getElementById("list").firstElementChild.innerText);
+        alert(document.getElementById("list").lastElementChild.innerText);
+        alert(document.getElementById("list").firstElementChild.nextElementSibling.innerText);
+        alert(document.getElementById("list").lastElementChild.previousElementSibling.innerText);
+        alert(document.getElementById("list").firstElementChild.nextElementSibling.nextElementSibling.innerText);
+        //Second way
+        alert(document.getElementById("list").children[0].innerText);
+        alert(document.getElementById("list").children[4].innerText);
+        alert(document.getElementById("list").children[1].innerText);
+        alert(document.getElementById("list").children[3].innerText);
+        alert(document.getElementById("list").children[2].innerText);
+    </script>
+</body>
+</html>
+
+<!--Task5-->
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Test Page</title>
+</head>
+<body>
+    <h1>I'am a big header!!!</h1>
+<div id="myDiv">
+ <p>First paragraph</p>
+ <p>Second paragraph</p>
+ <p>Third paragraph</p>
+ <p>Fourth paragraph</p>
+</div>
+<ul id="myList">
+ <li>Make</li>
+ <li>me</li>
+ <li>horizontal!</li>
+</ul>
+<span>Make me invisible, please!</span>
+<script>
+    document.getElementsByTagName('h1')[0].style.backgroundColor = "#a9fc03";
+    document.getElementById('myDiv').children[0].style.fontWeight = "900";
+    document.getElementById('myDiv').children[1].style.color = "red";
+    document.getElementById('myDiv').children[2].style.textDecoration = "underline";
+    document.getElementById('myDiv').children[3].style.fontStyle = "italic";
+    document.getElementById('myList').style.setProperty("display", "flex");
+    Array.from(document.getElementsByTagName("li")).forEach(element => {
+        element.style.setProperty("display", "inline");
+    });
+    document.getElementsByTagName("span")[0].style.opacity = 0;
+
+</script>
+</body>
+
+</html>
+
+<!--Task6-->
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Test Page</title>
+</head>
+<body>
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Test Page</title>
+</head>
+<body>
+    <input type="text" id="input1" value="Text1">
+    <input type="text" id="input2" value="Text2">
+<script>
+    document.getElementById('input1').value = prompt('Please enter first message:');
+    document.getElementById('input2').value = prompt('Please enter second message:');
+    const input1 = document.getElementById('input1').value;
+    document.getElementById('input1').value = document.getElementById('input2').value;
+    document.getElementById('input2').value = input1;
+</script>
+</body>
+
+</html>
+
+<!--Task7-->
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Test Page</title>
+</head>
+<body>
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Test Page</title>
+</head>
+<body>
+
+<script>
+    document.body.appendChild(document.createElement('main'));
+    let main = document.getElementsByTagName('main')[0];
+    main.setAttribute("class", "mainClass check item");
+    main.appendChild(document.createElement('div'));
+    let div = document.getElementsByTagName('div')[0];
+    div.setAttribute("id", "myDiv");
+    div.appendChild(document.createElement('p'));
+    div.firstElementChild.innerText = 'First paragraph';
+</script>
+</body>
+</html>
