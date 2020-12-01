@@ -1,0 +1,239 @@
+<!--Task1-->
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Test Page</title>
+</head>
+<body>
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Test Page</title>
+</head>
+<body>
+<script>
+    let blankPage = window.open("about:blank", "blankPage", "width=300,height=300");
+    setTimeout(() => {  
+      blankPage.resizeTo(500, 500);
+      setTimeout(() => {  
+        blankPage.moveTo(200, 200);
+        setTimeout(() => {  blankPage.close() }, 2000);
+      }, 2000);
+    }, 2000);
+</script>
+</body>
+</html>
+
+<!--Task2-->
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Test Page</title>
+</head>
+<body>
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Test Page</title>
+</head>
+<body>
+<p id ='text'>I learning JavaScript events!</p> 
+<div>
+	<button onclick="changeCSS()">Change style!</button>
+</div>
+<script>
+    function changeCSS() {
+        text.style.color = "orange";
+        text.style.fontFamily = "Comic Sans MS";
+    }
+</script>
+</body>
+</html>
+
+<!--Task3-->
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Test Page</title>
+</head>
+<body>
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Test Page</title>
+</head>
+<body>
+<div>
+  <button onclick="paintPage('blue')">Click to make the page blue.</button>
+  <button ondblclick="paintPage('pink')">Double-click to make the page pink.</button>
+  <button onmousedown="paintPage('brown')" onmouseup="paintPage('white')">Click and hold to make the page brown.</button>
+  <a href="" onmouseover="paintPage('yellow')" onmouseleave = "paintPage('white')">Hover over to make page yellow</a>
+</div>
+<script>
+    function paintPage(color) {
+        document.body.style.backgroundColor = color;
+    }
+</script>
+</body>
+</html>
+
+<!--Task4-->
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Test Page</title>
+</head>
+<body>
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Test Page</title>
+</head>
+<body>
+<div>
+  <select name="names" id="nameList">
+    <option value="John">John</option>
+    <option value="Peter">Peter</option>
+    <option value="Alice">Alice</option>
+    <option value="Alex">Alex</option>
+    <option value="Iren">Iren</option>
+  </select>
+  <button onclick="remove()">Choose and delete</button>
+</div>
+<script>
+    function remove() {
+      nameList.removeChild(nameList.children[nameList.selectedOptions[0].index]);
+    }
+</script>
+</body>
+</html>
+
+<!--Task5-->
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Test Page</title>
+</head>
+<body>
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Test Page</title>
+</head>
+<body>
+  <button id="btn" onclick="writeMessage('I was pressed!')" onmouseover="writeMessage('Mouse on me!')" onmouseout="writeMessage('Mouse is not on me!')">Live button!</button>
+  <div id="messages"></div>
+<script>
+
+    function writeMessage(text) {
+      messages.innerHTML += `<br>${text}</br>`;
+    }
+</script>
+</body>
+</html>
+
+<!--Task6-->
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Test Page</title>
+</head>
+<body>
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Test Page</title>
+</head>
+<body onresize="writeSize()">
+<script>
+    function writeSize() {
+      document.body.innerText = `Width:${window.outerWidth},Height:${window.outerHeight}`;
+    }
+</script>
+</body>
+</html>
+
+<!--Task7-->
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Test Page</title>
+</head>
+<body>
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Test Page</title>
+</head>
+<body>
+  <select name="country" id="country">
+    <option value="ger">Germany</option>
+    <option value="usa">USA</option>
+    <option value="ukr">Ukraine</option>
+  </select>
+                      
+  <select name="cities" id="cities"></select>
+  <p id="location"></p>  
+<script>
+    function triggerPopulation() {
+      switch (country.selectedOptions[0].innerText) {
+        case 'USA': populateCities('Washington', 'Salt Lake City', 'New York', 'Santa Monica');
+          break;
+        case 'Germany': populateCities('Berlin', 'Munich', 'Bremen', 'Hesse', 'Hamburg');
+          break;
+        case 'Ukraine': populateCities('Kyiv', 'Lviv', 'Dnipro', 'Lutsk', 'Poltava');
+          break;
+        default:
+          break;
+      }
+    }
+
+    function populateCities(...names) {
+      cities.innerHTML = '';
+      Array.from(names).forEach(name => {
+        cities.appendChild(document.createElement("option"));
+        cities.lastElementChild.innerText = name;
+      });
+    }
+
+    function showLocation() {
+      document.getElementById('location').textContent = `${country.selectedOptions[0].innerText}, ${cities.selectedOptions[0].innerText}`;
+    }
+
+    document.addEventListener("readystatechange", triggerPopulation);
+    document.addEventListener("readystatechange", showLocation);
+    country.addEventListener("change", triggerPopulation);
+    country.addEventListener("change", showLocation);
+    cities.addEventListener("change", showLocation);
+
+</script>
+</body>
+</html>
