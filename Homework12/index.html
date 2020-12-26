@@ -1,0 +1,55 @@
+<!--Task1-->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Homework 12 Task 1</title>
+</head>
+<body>
+  <button onclick="loadAuthors()" id="btn">Download books</button>
+  <ul id='data'></ul>
+    <script>
+      function loadAuthors() {
+        var xhr = new XMLHttpRequest();
+xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4){
+      document.getElementById("data").innerHTML = "";
+      Array.from(Object.values(JSON.parse(xhr.responseText))).forEach(author => {
+        var node = document.createElement("LI");                 
+        var textnode = document.createTextNode(author);         
+        node.appendChild(textnode);                              
+        document.getElementById("data").appendChild(node);
+      });
+    }
+};
+xhr.open('GET', 'books.json', true);
+xhr.responseType ="text";
+xhr.send();
+}
+</script>
+</body>
+</html>
+
+<!--Task2-->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Homework 12 Task 2</title>
+</head>
+<body>
+  <button onclick="updateButton()" id="btn">Vote!</button>
+    <script>
+      function updateButton() {
+        var xhr = new XMLHttpRequest();
+xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4){
+      document.getElementById("btn").innerText = eval(xhr.responseText);
+    }
+};
+xhr.open('GET', 'vote.txt', true);
+xhr.send();
+}
+</script>
+</body>
+</html>
